@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<jmxConfigurator />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- 典型的日志pattern -->
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 演示按时间滚动的策略 -->
+	<appender name="defaultlogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<param name="Encoding" value="UTF-8" />  
+		<file>../logs/app-web-admin/mylog.log</file>		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>./logs/app-web-admin/mylog.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<!-- 保留 90天数据，默认无限-->
+			<maxHistory>90</maxHistory>
+		</rollingPolicy>		
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+		
+	<!-- 综合时间与大小的滚动策略，先按小时滚动，小时内的文件大于10mb时再按大小滚动 -->
+	<appender name="businessLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/app-web-admin/business.log</file>		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>./logs/app-web-admin/business-%d{yyyy-MM-dd_HH}.%i.zip</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>		
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.app.web" level="INFO" />
+		
+	<root level="INFO">
+		<!-- 上生产的时候剔除掉console输出-->
+		<appender-ref ref="console" /> 
+		<appender-ref ref="defaultlogFile" />
+	</root>
+</configuration>
