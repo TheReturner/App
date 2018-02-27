@@ -77,5 +77,6 @@
 	    <module>app-core</module>
     	<module>app-API</module>
       	<module>app-web-admin</module>
+    <module>app-leetcode</module>
   </modules>
 </project>
