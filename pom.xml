@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ 	<modelVersion>4.0.0</modelVersion>
+  
+  	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.3.RELEASE</version>
+ 	</parent>
+  
+  	<groupId>com.app.pay</groupId>
+    <artifactId>App</artifactId>
+    <version>${project.version}</version>
+    <packaging>pom</packaging>
+	
+	<name>${project.artifactId}</name>
+	<url>http://maven.apache.org</url>
+	<description>The parent pom of App project</description>
+	
+    <properties>
+    	<project.version>0.0.1-SNAPSHOT</project.version>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<junit.version>3.8.2</junit.version>
+    	<spring-boot.version>1.5.3.RELEASE</spring-boot.version>
+    	<tomcat-api.version>6.0.37</tomcat-api.version>
+    	<javax-api.version>3.1.0</javax-api.version>
+    	<hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
+    	<lombok.version>1.16.18</lombok.version>
+    </properties>
+    
+	<dependencyManagement>
+		<dependencies>
+			<!-- Test -->
+		    <dependency>
+		        <groupId>junit</groupId>
+		        <artifactId>junit</artifactId>
+		        <version>${junit.version}</version>
+		    </dependency>
+		    
+		    <!-- spring-boot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			
+			<!-- bean utils -->
+			<dependency>
+        		<groupId>org.projectlombok</groupId>
+        		<artifactId>lombok</artifactId>
+        		<version>${lombok.version}</version>
+    		</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<build> 
+	    <plugins> 
+	        <plugin> 
+	            <groupId>org.apache.maven.plugins</groupId> 
+	            <artifactId>maven-compiler-plugin</artifactId> 
+	            <configuration> 
+	                <source>1.8</source> 
+	                <target>1.8</target> 
+	            </configuration> 
+	        </plugin> 
+	    </plugins> 
+	</build>
+	
+    <modules>
+	  	<module>app-config</module>
+	  	<module>app-login</module>
+	  	<module>app-cache</module>
+	  	<module>app-bean</module>
+	  	<module>app-service</module>
+	  	<module>app-service-impl</module>
+	  	<module>app-timing</module>
+	    <module>app-core</module>
+    	<module>app-API</module>
+      	<module>app-web-admin</module>
+  </modules>
+</project>
