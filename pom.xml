@@ -26,6 +26,7 @@
     	<javax-api.version>3.1.0</javax-api.version>
     	<hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
     	<lombok.version>1.16.18</lombok.version>
+    	<guava.version>20.0</guava.version>
     </properties>
     
 	<dependencyManagement>
@@ -49,6 +50,11 @@
         		<groupId>org.projectlombok</groupId>
         		<artifactId>lombok</artifactId>
         		<version>${lombok.version}</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>com.google.guava</groupId>
+    			<artifactId>guava</artifactId>
+    			<version>${guava.version}</version>
     		</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -78,5 +84,6 @@
     	<module>app-API</module>
       	<module>app-web-admin</module>
     <module>app-leetcode</module>
+    <module>app-api</module>
   </modules>
 </project>
